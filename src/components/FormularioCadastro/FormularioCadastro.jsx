@@ -5,7 +5,7 @@ import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 
-function FormularioCadastro({Enviar}){
+function FormularioCadastro({Enviar, isValidCPF}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
@@ -36,15 +36,17 @@ function FormularioCadastro({Enviar}){
         id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
 
         <TextField
-            value={cpf} 
+            value={cpf}
             onChange={(event) => {
-              setCpf(event.target.value)
-           }}
-        onBlur={(event) => {
-            setErros({cpf:{valido:false, texto:"CPF dece conter 11 digítos"}})
-        }}
-        error={!erros.cpf.valido}
-        helperText={erros.cpf.texto}  
+              setCpf(event.target.value);
+            }}
+    
+            onBlur={(event)=>{
+              const ehValido = isValidCPF(cpf);
+              setErros({cpf:ehValido})
+            }}
+            error={!erros.cpf.valido}
+            helperText={erros.cpf.texto} 
         id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
       
         <FormControlLabel 
