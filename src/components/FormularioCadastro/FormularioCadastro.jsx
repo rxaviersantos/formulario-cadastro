@@ -8,6 +8,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 function FormularioCadastro(){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
+    const [cpf, setCpf] = useState("")
+    const [promocoes, setPromocoes] = useState(true)
+    const [novidades, setNovidades] = useState(true)
 
     return(
     <form
@@ -17,27 +20,39 @@ function FormularioCadastro(){
         }}>
 
         <TextField
-           value={nome} onChange={(event) => {let tmpNome = event.target.value;
-            if (tmpNome.length >= 3) {
-                tmpNome = (tmpNome.substr(0, 3))
-            }
-            setNome(tmpNome)
-        }}
+            value={nome} 
+            onChange={(event) => {
+             let tmpNome = event.target.value;
+                setNome(tmpNome)
+            }}
         id="nome" label="Nome" variant="outlined" margin='dense' fullWidth />
 
-
         <TextField
-           value={sobrenome} onChange={(event) => {setSobrenome(event.target.value)
-           
-        }}
+            value={sobrenome} 
+            onChange={(event) => {
+              setSobrenome(event.target.value)
+           }}
         id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
 
-
-        <TextField id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
+        <TextField
+            value={cpf} 
+            onChange={(event) => {
+              setCpf(event.target.value)
+           }}
+        id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
       
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Promoções" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Novidades" />
-        
+        <FormControlLabel 
+        control={<Checkbox checked={promocoes}
+            onChange={(event) =>{
+            setPromocoes(event.target.checked)
+        }}/>} label="Promoções" />
+
+        <FormControlLabel 
+        control={<Checkbox checked={novidades}
+            onChange={(event) =>{
+            setNovidades(event.target.checked)
+        }}/>} label="Novidades" />
+
         <Button type='subimit' variant="outlined"> 
             Cadastrar
         </Button>
