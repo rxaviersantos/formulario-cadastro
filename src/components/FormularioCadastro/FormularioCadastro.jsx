@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox'
@@ -6,16 +6,33 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 function FormularioCadastro(){
+    const [nome,setNome] = useState("");
+    const [sobrenome, setSobrenome] = useState("")
 
-    let nome = "";
     return(
     <form
         onSubmit={(event) => {
             event.preventDefault();
-            console.log(nome)
+            console.log(nome, sobrenome)
         }}>
-        <TextField id="nome" label="Nome" variant="outlined" margin='dense' fullWidth />
-        <TextField id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
+
+        <TextField
+           value={nome} onChange={(event) => {let tmpNome = event.target.value;
+            if (tmpNome.length >= 3) {
+                tmpNome = (tmpNome.substr(0, 3))
+            }
+            setNome(tmpNome)
+        }}
+        id="nome" label="Nome" variant="outlined" margin='dense' fullWidth />
+
+
+        <TextField
+           value={sobrenome} onChange={(event) => {setSobrenome(event.target.value)
+           
+        }}
+        id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
+
+
         <TextField id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
       
         <FormControlLabel control={<Checkbox defaultChecked />} label="Promoções" />
