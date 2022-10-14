@@ -9,8 +9,8 @@ function FormularioCadastro({Enviar, isValidCPF}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
-    const [promocoes, setPromocoes] = useState(true)
-    const [novidades, setNovidades] = useState(true)
+    const [promocoes, setPromocoes] = useState(false)
+    const [novidades, setNovidades] = useState(false)
     const [erros, setErros] = useState({cpf:{valido:true, texto:""}})
 
     return(
@@ -19,21 +19,29 @@ function FormularioCadastro({Enviar, isValidCPF}){
             event.preventDefault();
             Enviar({nome, sobrenome, cpf, promocoes, novidades})
         }}>
-
         <TextField
             value={nome} 
             onChange={(event) => {
-             let tmpNome = event.target.value;
-                setNome(tmpNome)
+              setNome(event.target.value);
             }}
-        id="nome" label="Nome" variant="outlined" margin='dense' fullWidth />
+        id="nome"
+        label="Nome" 
+        variant="outlined" 
+        margin='dense' 
+        fullWidth 
+        />
 
         <TextField
             value={sobrenome} 
             onChange={(event) => {
               setSobrenome(event.target.value)
            }}
-        id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
+        id="sobrenome" 
+        label="Sobrenome" 
+        variant="outlined" 
+        margin='dense'  
+        fullWidth 
+        />
 
         <TextField
             value={cpf}
@@ -47,7 +55,12 @@ function FormularioCadastro({Enviar, isValidCPF}){
             }}
             error={!erros.cpf.valido}
             helperText={erros.cpf.texto} 
-        id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
+        id="CPF" 
+        label="CPF" 
+        variant="outlined" 
+        margin='dense'  
+        fullWidth 
+        />
       
         <FormControlLabel 
         control={<Checkbox checked={promocoes}
