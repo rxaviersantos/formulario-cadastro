@@ -7,18 +7,20 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 function FormularioCadastro(){
 
+    let nome = "";
     return(
-    <form>
+    <form
+        onSubmit={(event) => {
+            event.preventDefault();
+            console.log(nome)
+        }}>
         <TextField id="nome" label="Nome" variant="outlined" margin='dense' fullWidth />
         <TextField id="sobrenome" label="Sobrenome" variant="outlined" margin='dense'  fullWidth />
         <TextField id="CPF" label="CPF" variant="outlined" margin='dense'  fullWidth />
       
-   
-      <FormControlLabel control={<Checkbox defaultChecked />} label="Promoções" />
- 
-      <FormControlLabel control={<Checkbox defaultChecked />} label="Novidades" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Promoções" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Novidades" />
         
-
         <Button type='subimit' variant="outlined"> 
             Cadastrar
         </Button>
