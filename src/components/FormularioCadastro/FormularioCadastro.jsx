@@ -5,7 +5,7 @@ import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 
-function FormularioCadastro(){
+function FormularioCadastro({Enviar}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
@@ -16,7 +16,7 @@ function FormularioCadastro(){
     <form
         onSubmit={(event) => {
             event.preventDefault();
-            console.log(nome, sobrenome)
+            Enviar({nome, sobrenome, cpf, promocoes, novidades})
         }}>
 
         <TextField
