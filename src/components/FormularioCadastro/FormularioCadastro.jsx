@@ -7,6 +7,24 @@ import DadosUsuario from "./DadosUsuario"
 
 function FormularioCadastro({Enviar, isValidCPF}){
     const [etapaAtual, setEtapaAtual] = useState(0);
+
+    function proximo(){
+        setEtapaAtual(etapaAtual+1)
+    }
+
+    function formularioAtual(etapa){
+        switch(etapa){
+            case 0:
+                return <DadosUsuario Enviar={proximo}/>
+            case 1:
+                return <DadosPessoais Enviar={proximo} isValidCPF={isValidCPF} />
+            case 2: 
+                return  <DadosEntrega Enviar={Enviar}/> 
+            default:
+                return <Typography>Erro ao selecionar formulário</Typography>   
+        }
+    }
+    
     return(
         <>
         {formularioAtual(etapaAtual)}
@@ -14,17 +32,5 @@ function FormularioCadastro({Enviar, isValidCPF}){
     )
 }
 
-function formularioAtual(etapa){
-    switch(etapa){
-        case 0:
-            return <DadosUsuario/>
-        case 1:
-            return <DadosPessoais/>
-        case 2: 
-            return  <DadosEntrega/> 
-        default:
-            return <Typography>Erro ao selecionar formulário</Typography>   
-    }
-}
 
 export default FormularioCadastro;

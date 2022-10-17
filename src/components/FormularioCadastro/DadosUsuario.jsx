@@ -1,13 +1,17 @@
 import { Button, TextField } from "@mui/material";
 import React from "react";
 
-function DadosUsuario(){
+function DadosUsuario({Enviar}){
     return(
-        <form>
+        <form onSubmit={(event) =>{
+            event.preventDefault()
+            Enviar();
+        }}>
             <TextField 
             id="email" 
             label="email" 
             type="email" 
+            required
             variant="outlined" 
             margin='dense' 
             fullWidth />
@@ -16,6 +20,7 @@ function DadosUsuario(){
             id="senha" 
             label="senha" 
             type="password" 
+            required
             variant="outlined" 
             margin='dense' 
             fullWidth />
