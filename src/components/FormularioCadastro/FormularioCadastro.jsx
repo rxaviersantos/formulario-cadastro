@@ -1,3 +1,4 @@
+import { StepLabel, Stepper, Typography, Step } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
@@ -9,13 +10,16 @@ function FormularioCadastro({Enviar, isValidCPF}){
     const [dadosColetados, setDados] = useState({});
 
     useEffect(() =>{
-        console.log(dadosColetados)
+        if(etapaAtual === formularios.length-1){
+            Enviar(dadosColetados)
+        }
     })
     
     const formularios = [
         <DadosUsuario Enviar={coletarDados}/>, 
         <DadosPessoais Enviar={coletarDados} isValidCPF={isValidCPF}/>,  
-        <DadosEntrega Enviar={coletarDados}/>
+        <DadosEntrega Enviar={coletarDados}/>,
+        <Typography variant='h5'>Obrigado pelo Cadastro</Typography>
     ]
 
     function coletarDados(dados){
@@ -29,6 +33,12 @@ function FormularioCadastro({Enviar, isValidCPF}){
     
     return(
         <>
+        <Stepper activeStep={etapaAtual}>
+            <Step><StepLabel>Login</StepLabel></Step>
+            <Step><StepLabel>Pessoal</StepLabel></Step>
+            <Step><StepLabel>Entrega</StepLabel></Step>
+            <Step><StepLabel>Finalização</StepLabel></Step>
+        </Stepper>
         {formularios[etapaAtual]}
         </>
     )
