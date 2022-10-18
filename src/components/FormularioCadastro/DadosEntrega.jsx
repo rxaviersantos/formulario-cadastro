@@ -66,7 +66,7 @@ function DadosEntrega({Enviar}){
                       }}
             id="cidade" 
             label="Cidade" 
-            type="number" 
+            type="text" 
             variant="outlined" 
             margin='dense' 
             />
