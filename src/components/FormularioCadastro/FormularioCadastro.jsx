@@ -13,7 +13,7 @@ function FormularioCadastro({Enviar, isValidCPF}){
     <DadosEntrega Enviar={Enviar}/>]
 
     function proximo(){
-        setEtapaAtual(etapaAtual+1)
+        setEtapaAtual(etapaAtual +1 )
     }
     
     return(
