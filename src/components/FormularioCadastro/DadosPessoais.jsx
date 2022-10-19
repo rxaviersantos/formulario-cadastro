@@ -5,13 +5,20 @@ import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 
-function DadosPessoais({Enviar, isValidCPF}){
+function DadosPessoais({Enviar, validacoes}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
     const [promocoes, setPromocoes] = useState(false)
     const [novidades, setNovidades] = useState(false)
     const [erros, setErros] = useState({cpf:{valido:true, texto:""}})
+
+function validarCampos(event){
+    (event) => {
+        const ehValido = isValidCPF(cpf)
+        setErros({cpf: ehValido})
+    }
+}    
 
     return(
     <form
@@ -49,13 +56,11 @@ function DadosPessoais({Enviar, isValidCPF}){
               setCpf(event.target.value);
             }}
     
-            onBlur={(event)=>{
-              const ehValido = isValidCPF(cpf);
-              setErros({cpf:ehValido})
-            }}
+            onBlur={validarCampos}
             error={!erros.cpf.valido}
             helperText={erros.cpf.texto} 
         id="CPF" 
+        name="cpf"
         label="CPF" 
         variant="outlined" 
         margin='dense'  
