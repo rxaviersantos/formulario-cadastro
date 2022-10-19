@@ -14,4 +14,4 @@ function isValidCPF(cpf) {
     }
   }
 
-  export isValidCPF, isValidarSenha;
+  export {isValidCPF, isValidarSenha}

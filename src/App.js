@@ -11,7 +11,7 @@ class  App extends Component {
       <>
       <Container component="article" maxWidth="sm">
         <Typography variant='h3' component='h1' algin='center'>Formulário de Cadastro</Typography>
-        <FormularioCadastro Enviar={EnviarForm} validacoes={{cpf:isValidCPF, senha:isValidarSenhaa}}/>
+        <FormularioCadastro Enviar={EnviarForm} validacoes={{cpf:isValidCPF, senha:isValidarSenha}}/>
       </Container> 
       </>
     )

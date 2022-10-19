@@ -5,7 +5,7 @@ import DadosPessoais from './DadosPessoais';
 import DadosUsuario from "./DadosUsuario"
 
 
-function FormularioCadastro({Enviar, isValidCPF}){
+function FormularioCadastro({Enviar, validacoes}){
     const [etapaAtual, setEtapaAtual] = useState(0);
     const [dadosColetados, setDados] = useState({});
 
@@ -16,9 +16,9 @@ function FormularioCadastro({Enviar, isValidCPF}){
     })
     
     const formularios = [
-        <DadosUsuario Enviar={coletarDados}/>, 
-        <DadosPessoais Enviar={coletarDados} isValidCPF={isValidCPF}/>,  
-        <DadosEntrega Enviar={coletarDados}/>,
+        <DadosUsuario Enviar={coletarDados}  validacoes={validacoes}/>, 
+        <DadosPessoais Enviar={coletarDados} validacoes={validacoes}/>,  
+        <DadosEntrega Enviar={coletarDados}  validacoes={validacoes}/>,
         <Typography variant='h5'>Obrigado pelo Cadastro</Typography>
     ]
 
