@@ -11,15 +11,14 @@ function DadosPessoais({Enviar, validacoes}){
     const [cpf, setCpf] = useState("")
     const [promocoes, setPromocoes] = useState(false)
     const [novidades, setNovidades] = useState(false)
-    const [erros, setErros] = useState({cpf:{valido:true, texto:""}})
+    
+    const [erros, setErros] = useState({cpf:{valido: true, texto:""}})
 
     function validarCampos(event){
-        console.log(event.target)
         const {name, value} = event.target
         const novoEstado = {...erros}
         novoEstado [name] = validacoes[name](value)
         setErros(novoEstado)
-        console.log(novoEstado)
     }
   
 
@@ -34,11 +33,11 @@ function DadosPessoais({Enviar, validacoes}){
             onChange={(event) => {
               setNome(event.target.value);
             }}
-        id="nome"
-        label="Nome" 
-        variant="outlined" 
-        margin='dense' 
-        fullWidth 
+            id="nome"
+            label="Nome" 
+            variant="outlined" 
+            margin='dense' 
+            fullWidth 
         />
 
         <TextField
@@ -46,11 +45,11 @@ function DadosPessoais({Enviar, validacoes}){
             onChange={(event) => {
               setSobrenome(event.target.value)
            }}
-        id="sobrenome" 
-        label="Sobrenome" 
-        variant="outlined" 
-        margin='dense'  
-        fullWidth 
+            id="sobrenome" 
+            label="Sobrenome" 
+            variant="outlined" 
+            margin='dense'  
+            fullWidth 
         />
 
         <TextField
@@ -62,12 +61,12 @@ function DadosPessoais({Enviar, validacoes}){
             onBlur={validarCampos}
             error={!erros.cpf.valido}
             helperText={erros.cpf.texto} 
-        id="CPF" 
-        name="cpf"
-        label="CPF" 
-        variant="outlined" 
-        margin='dense'  
-        fullWidth 
+            id="CPF" 
+            name="cpf"
+            label="CPF" 
+            variant="outlined" 
+            margin='dense'  
+            fullWidth 
         />
       
         <FormControlLabel 

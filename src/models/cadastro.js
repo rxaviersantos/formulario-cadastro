@@ -7,7 +7,7 @@ function isValidCPF(cpf) {
   }
 
   function isValidarSenha(senha) {
-    if(senha.length <4 || senha.length > 52){
+    if(senha.length < 4 || senha.length > 52){
       return {valido:false, texto:"A senha deve conter 4 e 52 digitos."}
     }else{
       return {valido:false, texto:""}
