@@ -63,7 +63,7 @@ function DadosUsuario({Enviar, validacoes}){
             <Button 
             type="subimit" 
             variant="outlined">
-            Cadastrar</Button>
+            Próximo</Button>
 
         </form>
     )
