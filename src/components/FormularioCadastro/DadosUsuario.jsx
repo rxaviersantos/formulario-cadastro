@@ -8,20 +8,19 @@ function DadosUsuario({Enviar, validacoes}){
     const [erros, setErros] = useState({senha:{valido: true, texto:""}})
 
     function validarCampos(event){
-        const {name, value} = event.target
-        const novoEstado = {...erros}
+        const {name, value} = event.target;
+        const novoEstado = {...erros};
         novoEstado[name] = validacoes[name](value);
-        setErros(novoEstado)
+        setErros(novoEstado);
     }
 
     function possoEnviar(){
         for(let campo in erros){
-            if(!erros[campo].valido)
-            {
+            if(!erros[campo].valido){
                 return false
             }
         }
-        return false
+        return true
     }
 
     return(

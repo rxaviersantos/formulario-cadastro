@@ -9,7 +9,7 @@ function DadosPessoais({Enviar, validacoes}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
-    const [promocoes, setPromocoes] = useState(false)
+    const [promocoes, setPromocoes] = useState(true)
     const [novidades, setNovidades] = useState(false)
 
     const [erros, setErros] = useState({cpf:{valido: true, texto:""}, nome: {valido: true, texto:""}})
