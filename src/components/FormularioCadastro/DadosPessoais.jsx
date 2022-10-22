@@ -20,13 +20,21 @@ function DadosPessoais({Enviar, validacoes}){
         novoEstado [name] = validacoes[name](value)
         setErros(novoEstado)
     }
-  
-
+    function possoEnviar() {
+        for (let campo in erros) {
+          if (!erros[campo].valido) {
+            return false;
+          }
+        }
+        return true;
+    }
     return(
     <form
         onSubmit={(event) => {
             event.preventDefault();
-            Enviar({nome, sobrenome, cpf, promocoes, novidades})
+            if (possoEnviar()){
+                Enviar({nome, sobrenome, cpf, promocoes, novidades})
+            }
         }}>
         <TextField
             value={nome} 
@@ -38,6 +46,7 @@ function DadosPessoais({Enviar, validacoes}){
             helperText={erros.nome.texto}
             id="nome"
             label="Nome" 
+            name="nome"
             variant="outlined" 
             margin='dense' 
             fullWidth 
@@ -49,6 +58,7 @@ function DadosPessoais({Enviar, validacoes}){
               setSobrenome(event.target.value)
            }}
             id="sobrenome" 
+            name="sobrenome"
             label="Sobrenome" 
             variant="outlined" 
             margin='dense'  
