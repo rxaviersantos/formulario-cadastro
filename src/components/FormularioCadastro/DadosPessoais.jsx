@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel';
+import ValidacoesCadastro from '../../contexts/ValidacoesCadastro';
 
 
-function DadosPessoais({Enviar, validacoes}){
+function DadosPessoais({Enviar}){
     const [nome,setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("")
     const [cpf, setCpf] = useState("")
@@ -14,6 +15,7 @@ function DadosPessoais({Enviar, validacoes}){
 
     const [erros, setErros] = useState({cpf:{valido: true, texto:""}, nome: {valido: true, texto:""}})
 
+    const validacoes = useContext(ValidacoesCadastro)
     function validarCampos(event){
         const {name, value} = event.target
         const novoEstado = {...erros}
