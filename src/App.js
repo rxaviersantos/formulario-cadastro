@@ -5,6 +5,7 @@ import {Container, Typography} from "@mui/material"
 import 'fontsource-roboto'
 
 import {isValidCPF, isValidarSenha} from "./models/cadastro"
+
 import ValidacoesCadastro from './contexts/ValidacoesCadastro';
 class  App extends Component {
   render() {

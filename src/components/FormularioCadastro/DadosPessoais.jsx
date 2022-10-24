@@ -12,16 +12,9 @@ function DadosPessoais({Enviar}){
     const [cpf, setCpf] = useState("")
     const [promocoes, setPromocoes] = useState(false)
     const [novidades, setNovidades] = useState(false)
-
-    const [erros, setErros] = useState({cpf: {valido: true, texto:""}, nome: {valido: true, texto:""}})
-
     const validacoes = useContext(ValidacoesCadastro)
-    function validarCampos(event){
-        const {name, value} = event.target
-        const ehvalido = validacoes[name](value)
-        const novoEstado = {...erros, name: ehvalido}
-        setErros(novoEstado)
-    }
+    const [erros, validarCampos] = useErros(validacoes)
+
     function possoEnviar() {
         for (let campo in erros) {
           if (!erros[campo].valido) {
