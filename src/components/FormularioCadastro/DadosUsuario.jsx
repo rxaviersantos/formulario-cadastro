@@ -11,7 +11,7 @@ function DadosUsuario({Enviar}){
     const validacoes = useContext(ValidacoesCadastro) 
         function validarCampos(event) {
             const { name, value } = event.target;
-            const novoEstado = { ...erros };
+            const novoEstado = { ...erros};
             novoEstado[name] = validacoes[name](value);
             setErros(novoEstado);
         }
@@ -38,6 +38,7 @@ function DadosUsuario({Enviar}){
                 setEmail(event.target.value)
             }}
             id="email" 
+            name="email"
             label="email" 
             type="email" 
             required
@@ -54,6 +55,7 @@ function DadosUsuario({Enviar}){
             error={!erros.senha.valido}
             helperText={erros.senha.texto}   
             id="senha" 
+            name="senha"
             label="senha" 
             type="password" 
             required
