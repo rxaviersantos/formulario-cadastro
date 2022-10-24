@@ -4,6 +4,8 @@ import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel';
 import ValidacoesCadastro from '../../contexts/ValidacoesCadastro';
+import useErros from "../../hooks/useErros";
+
 
 
 function DadosPessoais({Enviar}){
@@ -13,16 +15,9 @@ function DadosPessoais({Enviar}){
     const [promocoes, setPromocoes] = useState(false)
     const [novidades, setNovidades] = useState(false)
     const validacoes = useContext(ValidacoesCadastro)
-    const [erros, validarCampos] = useErros(validacoes)
+    const [erros, validarCampos, possoEnviar] = useErros(validacoes)
 
-    function possoEnviar() {
-        for (let campo in erros) {
-          if (!erros[campo].valido) {
-            return false;
-          }
-        }
-        return true;
-    }
+
     return(
     <form
         onSubmit={(event) => {
